@@ -1,0 +1,25 @@
+filter
+
+Cet exo vaut 50 points donc il y en a certainement un autre qui ressemble a printf dans la meme
+session d'exam.
+
+Fonction autorise: read, open, write, malloc, printf, perror (d'autres trucs mais j'ai oublie)
+
+En gros vous avez le droit a stdlib.h unistd.h et stdio.h
+
+Tu dois ecrire un programme qui prend un seul argument (char *) en parametre.
+
+Ensuite le programme doit lire stdin (l'entre du terminal en gros, ca correspond a fd = 1)
+Apres que l'utilisateur est taper quelque chose tu dois lui renvoyer ce qu'il a taper en
+remplacent les occurences de la string de base par *.
+
+Exemple:
+echo "hello helllo hello helo" | ./filter hello
+***** helllo ***** helo
+
+Exemple:
+echo "ccaccacaccaaa" | ./filter caca
+ccac****ccaaa
+
+S'il y a un probleme dans un malloc ou un autre truc (j'ai oublie) il faut ecrire "Error: "
+suivi de l'erreur en question, il faut ecrire ca dans la sortie d'erreur.
