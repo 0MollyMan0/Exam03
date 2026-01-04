@@ -6,49 +6,45 @@
 /*   By: anfouger <anfouger@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/04 10:29:16 by anfouger          #+#    #+#             */
-/*   Updated: 2026/01/04 10:29:29 by anfouger         ###   ########.fr       */
+/*   Updated: 2026/01/04 13:01:01 by anfouger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include <stdlib.h>
 
-int is_valid(int *tab, int pos)
+void	display(int queens[], int n)
 {
-	if (pos == 0)
-		return (1);
-	if (tab[pos] == 1 && tab[pos - 1] == 1)
-		return 0;
-	return (1);
+	int	row;
+	int	col;
+
+	row = 0;
+	while (row < n)
+	{
+		col = 0;
+		while (col < n)
+		{
+			if (queens[row] == col)
+				printf(" Q ");
+			else
+				printf(" . ");
+			col++;
+		}
+		printf("\n");
+		row++;
+	}
+	printf("\n");
 }
 
-void	bit_pos(int pos, int len, int *tab)
-{
-	int choix;
+// void	n_queens(int x, int y, int pos, int n, int **tab)
+// {
 
-	if (pos == len)
-	{
-		for (int i = 0; i < len; i++)
-			printf("%d", tab[i]);
-		printf("%s", "\n");
-		return ;
-	}
-	
-	choix = 0;
-	while (choix <= 1)
-	{
-		tab[pos] = choix;
-		if (is_valid(tab, pos))
-			bit_pos(pos + 1, len, tab);
-		choix++;
-	}
-}
+// }
 
-int main(int ac, char **av)
+int	main(void)
 {
-	(void)ac;
-	int arr[atoi(av[1])];
-	
-	bit_pos(0, atoi(av[1]), arr);
+	int	queens[4] = {1, 3, 0, 2};
+
+	display(queens, 4);
 	return (0);
 }

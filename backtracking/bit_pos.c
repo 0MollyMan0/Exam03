@@ -6,7 +6,7 @@
 /*   By: anfouger <anfouger@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/04 09:37:47 by anfouger          #+#    #+#             */
-/*   Updated: 2026/01/04 10:10:01 by anfouger         ###   ########.fr       */
+/*   Updated: 2026/01/04 10:41:53 by anfouger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,8 @@ void	bit_pos(int pos, int len, int *tab)
 int main(int ac, char **av)
 {
 	(void)ac;
-	int arr[atoi(av[1])];
+	int tab[atoi(av[1])];
 	
-	bit_pos(0, atoi(av[1]), arr);
+	bit_pos(0, atoi(av[1]), tab);
 	return (0);
 }
