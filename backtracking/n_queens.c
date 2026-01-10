@@ -6,12 +6,26 @@
 /*   By: anfouger <anfouger@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/04 10:29:16 by anfouger          #+#    #+#             */
-/*   Updated: 2026/01/10 13:10:59 by anfouger         ###   ########.fr       */
+/*   Updated: 2026/01/10 13:57:35 by anfouger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include <stdlib.h>
+
+int is_valid(int *queens, int row, int col)
+{
+	int i;
+
+	i = 0;
+	while (i < row)
+	{
+		if (queens[i] == col)
+			return (0);
+		i++;
+	}
+	return (1);
+}
 
 void	display_board(int n, int *queens)
 {
@@ -35,24 +49,27 @@ void	display_board(int n, int *queens)
 	}
 }
 
-int *place_queens(int n, int *queens)
+void	place_queens(int n, int row, int *queens)
 {
-	int row;
 	int col;
-	
-	row = 0;
-	while (row < n)
+
+	if (row == n)
 	{
-		col = 0;
-		while (col < n)
-		{
-			if (col == row)
-				queens[row] = col;
-			col++;
-		}
-		row++;
+		display_board(n, queens);
+		printf("%s", "\n");
+		return ;
 	}
-	return (queens);
+	
+	col = 0;
+	while (col < n)
+	{
+		if (is_valid(queens, row, col))
+		{
+			queens[row] = col;
+			place_queens(n, row+1, queens);
+		}
+		col++;
+	}
 }
 
 int	main(int ac, char **av)
@@ -70,7 +87,6 @@ int	main(int ac, char **av)
 	queens = malloc(sizeof(int) * n);
 	if (!queens)
 		return (1);
-	place_queens(n, queens);
-	display_board(n, queens);
+	place_queens(n, 0, queens);
 	return (0);
 }
