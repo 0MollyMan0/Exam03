@@ -6,45 +6,36 @@
 /*   By: anfouger <anfouger@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/04 10:29:16 by anfouger          #+#    #+#             */
-/*   Updated: 2026/01/04 13:01:01 by anfouger         ###   ########.fr       */
+/*   Updated: 2026/01/10 12:35:28 by anfouger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include <stdlib.h>
 
-void	display(int queens[], int n)
+void	display_board(int n)
 {
-	int	row;
-	int	col;
+	int col;
+	int row;
 
-	row = 0;
-	while (row < n)
+	col = 0;
+	while (col < n)
 	{
-		col = 0;
-		while (col < n)
+		row = 0;
+		while (row < n)
 		{
-			if (queens[row] == col)
-				printf(" Q ");
-			else
-				printf(" . ");
-			col++;
+			printf("%s", " . ");
+			row++;
 		}
-		printf("\n");
-		row++;
+		printf("%s", "\n");
+		col++;
 	}
-	printf("\n");
 }
 
-// void	n_queens(int x, int y, int pos, int n, int **tab)
-// {
-
-// }
-
-int	main(void)
+int	main(int ac, char **av)
 {
-	int	queens[4] = {1, 3, 0, 2};
-
-	display(queens, 4);
+	if (ac != 2)
+		return (1);
+	display_board(atoi(av[1]));
 	return (0);
 }
