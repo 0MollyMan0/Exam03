@@ -9,7 +9,7 @@ En gros vous avez le droit a stdlib.h unistd.h et stdio.h
 
 Tu dois ecrire un programme qui prend un seul argument (char *) en parametre.
 
-Ensuite le programme doit lire stdin (l'entre du terminal en gros, ca correspond a fd = 1)
+Ensuite le programme doit lire stdin (l'entre du terminal en gros, ca correspond a fd = 0)
 Apres que l'utilisateur est taper quelque chose tu dois lui renvoyer ce qu'il a taper en
 remplacent les occurences de la string de base par *.
 
