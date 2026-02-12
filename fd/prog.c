@@ -6,25 +6,26 @@
 /*   By: anfouger <anfouger@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/26 08:17:30 by anfouger          #+#    #+#             */
-/*   Updated: 2026/01/26 08:37:14 by anfouger         ###   ########.fr       */
+/*   Updated: 2026/01/26 09:15:53 by anfouger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 #include <stdio.h>
+#include <stdlib.h>
 
 int main(void)
 {
-	char	c;
-	int		is_worked;
+	char	buf[4];
+	int		fd;
+	int		size;
+	ssize_t r;
 
-	is_worked = read(0, &c, 1);
-	while (is_worked)
-	{
-		write(1, &c, 1);
-		is_worked = read(0, &c, 1);	
-	}
-	if (is_worked == -1)
-		perror("error");
+	fd = 0;
+	size = 4;
+	while ((r = read(fd, buf, size)) > 0)
+		printf("%s\n", buf);
+	if (r == -1)
+		perror("read");
 	return (0);
 }
